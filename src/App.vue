@@ -1,5 +1,6 @@
 <script setup>
 import Header from "./components/Header.vue";
+import SearchView from "./views/SearchView.vue";
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import Header from "./components/Header.vue";
       <div
         class="border border-solid border-gray-200 w-full max-w-screen-lg p-8 rounded-lg shadow-md"
       >
-        Hello World!
+        <SearchView />
       </div>
     </div>
   </main>

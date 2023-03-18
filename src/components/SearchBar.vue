@@ -1,11 +1,12 @@
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref, defineProps, defineEmits } from "vue";
 
 const searchQuery = ref("");
+const props = defineProps(["placeholder"]);
 const emit = defineEmits(["search"]);
 
 function submitForm() {
-  emit("search", searchQuery);
+  emit("search", searchQuery.value);
 }
 </script>
 
@@ -14,8 +15,8 @@ function submitForm() {
     <input
       v-model="searchQuery"
       type="text"
-      placeholder="Search a passage"
-      class="border-gray-400"
+      :placeholder="props.placeholder"
+      class="border border-solid px-4 py-2 mb-2 rounded-full border-gray-400 w-full text-lg"
     />
   </form>
 </template>
