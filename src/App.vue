@@ -1,19 +1,16 @@
 <script setup>
 import Header from "./components/Header.vue";
-import SearchBar from "./components/SearchBar.vue";
-
-function handleSearch(text) {
-  console.log(text);
-}
 </script>
 
 <template>
   <Header />
   <main>
-    <div class="p-4">
-      <SearchBar @search="handleSearch" />
+    <div class="flex justify-center my-4 mx-8">
+      <div
+        class="border border-solid border-gray-200 w-full max-w-screen-lg p-8 rounded-lg shadow-md"
+      >
+        Hello World!
+      </div>
     </div>
   </main>
 </template>
-
-<style scoped></style>
