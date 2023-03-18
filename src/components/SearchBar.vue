@@ -1,24 +1,16 @@
 <script setup>
-import { ref, defineProps, defineEmits } from "vue";
+import { ref } from "vue";
 
-const searchQuery = ref("");
-const props = defineProps(["placeholder"]);
-const emit = defineEmits(["search"]);
-
-function submitForm() {
-  emit("search", searchQuery.value);
-}
+const text = ref("");
 </script>
 
 <template>
-  <form @submit.prevent="submitForm">
-    <input
-      v-model="searchQuery"
-      type="text"
-      :placeholder="props.placeholder"
-      class="border border-solid px-4 py-2 mb-2 rounded-full border-gray-400 w-full text-lg"
-    />
-  </form>
+  <input
+    v-model="text"
+    name="search"
+    type="search"
+    class="border border-solid px-4 py-2 mb-2 rounded-full border-gray-400 w-full text-lg"
+  />
 </template>
 
 <script></script>
