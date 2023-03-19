@@ -1,7 +1,14 @@
+<script setup>
+import { BookOpenIcon } from "@heroicons/vue/24/outline";
+</script>
+
 <template>
   <header
     class="bg-emerald-800 text-white text-4xl text-center p-6 font-serif font-extrabold"
   >
-    Bible Search
+    <h1>
+      Bible Search
+      <BookOpenIcon class="w-10 h-10 mb-2 ml-1 inline-block" />
+    </h1>
   </header>
 </template>
