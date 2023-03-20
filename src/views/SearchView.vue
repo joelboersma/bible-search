@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from "vue";
 import SearchBar from "../components/SearchBar.vue";
+import TranslationSelect from "../components/TranslationSelect.vue";
 
 const searchQuery = ref("");
+const translation = ref("NIV");
 
 function handleSubmit(e) {
-  console.log(searchQuery.value);
+  console.log(searchQuery.value, translation.value);
 }
 </script>
 
@@ -28,4 +30,5 @@ function handleSubmit(e) {
       </button>
     </form>
   </div>
+  <TranslationSelect v-model="translation" />
 </template>
