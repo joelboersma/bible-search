@@ -20,6 +20,7 @@ const translations = {
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     name="translation"
+    class="border border-solid border-gray-400 bg-white text-lg p-2 rounded-lg"
   >
     <option
       v-for="[code, name] in Object.entries(translations)"

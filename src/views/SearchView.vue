@@ -22,13 +22,16 @@ function handleSubmit(e) {
         placeholder="Search verses by keyword"
         class="w-full"
       ></SearchBar>
+      <TranslationSelect
+        v-model="translation"
+        class="mt-2 w-full sm:ml-2 sm:my-0 sm:w-auto"
+      />
       <button
         type="submit"
-        class="bg-emerald-800 hover:bg-emerald-700 transition-colors text-white px-4 py-2 rounded-lg ml-0 mt-2 w-full sm:w-auto sm:ml-2 sm:my-0"
+        class="bg-emerald-800 hover:bg-emerald-700 transition-colors text-white text-lg px-4 py-2 rounded-lg ml-0 mt-2 w-full sm:w-auto sm:ml-2 sm:my-0"
       >
         Submit
       </button>
     </form>
   </div>
-  <TranslationSelect v-model="translation" />
 </template>
