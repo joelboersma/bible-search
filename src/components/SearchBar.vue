@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps, defineEmits } from "vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
 defineProps(["modelValue", "placeholder"]);
