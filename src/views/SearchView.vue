@@ -1,13 +1,15 @@
 <script setup>
 import { ref } from "vue";
 import SearchBar from "../components/SearchBar.vue";
-import TranslationSelect from "../components/TranslationSelect.vue";
+import { getSearch } from "../services/esvApi";
 
 const searchQuery = ref("");
-const translation = ref("NIV");
+const results = ref({});
 
-function handleSubmit(e) {
-  console.log(searchQuery.value, translation.value);
+async function handleSubmit(e) {
+  const searchResults = await getSearch(searchQuery.value);
+  console.log(searchResults);
+  results.value = searchResults;
 }
 </script>
 
@@ -22,10 +24,6 @@ function handleSubmit(e) {
         placeholder="Search verses by keyword"
         class="w-full"
       ></SearchBar>
-      <TranslationSelect
-        v-model="translation"
-        class="mt-2 w-full sm:ml-2 sm:my-0 sm:w-auto"
-      />
       <button
         type="submit"
         class="bg-emerald-800 hover:bg-emerald-700 transition-colors text-white text-lg px-4 py-2 rounded-lg ml-0 mt-2 w-full sm:w-auto sm:ml-2 sm:my-0"
@@ -34,4 +32,5 @@ function handleSubmit(e) {
       </button>
     </form>
   </div>
+  <div>{{ results }}</div>
 </template>
