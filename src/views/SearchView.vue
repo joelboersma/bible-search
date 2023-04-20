@@ -32,5 +32,18 @@ async function handleSubmit(e) {
       </button>
     </form>
   </div>
-  <div>{{ results }}</div>
+  <table v-if="results.results" class="my-4">
+    <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="result in results.results">
+        <td>{{ result.reference }}</td>
+        <td>{{ result.content }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
