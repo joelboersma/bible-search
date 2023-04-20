@@ -18,6 +18,6 @@ async function httpGet(path) {
 }
 
 export async function getSearch(term, page = 1) {
-  const path = `/passage/search?q=${term}?page=${page}`;
+  const path = `/passage/search?q=${term}&page=${page}`;
   return httpGet(path);
 }
