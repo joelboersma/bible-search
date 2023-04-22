@@ -12,7 +12,7 @@ async function handleSubmit(submittedQuery) {
 
 <template>
   <div class="flex justify-center w-full">
-    <SearchForm @submit="handleSubmit"></SearchForm>
+    <SearchForm @submit="handleSubmit" class="max-w-xl"></SearchForm>
   </div>
   <SearchResultsTable :query="query"></SearchResultsTable>
 </template>

@@ -13,7 +13,7 @@ function handleSubmit() {
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="flex justify-center w-full max-w-xl flex-wrap sm:flex-nowrap"
+    class="flex w-full flex-wrap sm:flex-nowrap"
   >
     <SearchBar
       v-model="query"
