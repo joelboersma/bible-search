@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { getSearch } from "../services/esvApi";
 
 const fetchedResults = ref(false);
@@ -10,6 +10,10 @@ const currentPage = ref(0);
 const totalPages = ref(0);
 
 const props = defineProps(["query"]);
+
+const currentPageResults = computed(() => {
+  return results.value[currentPage.value - 1];
+});
 
 watch(
   () => props.query,
@@ -51,7 +55,7 @@ async function fetchFirstPageSearchResults(searchTerm) {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="result in results[0]">
+      <tr v-for="result in currentPageResults">
         <td>{{ result.reference }}</td>
         <td>{{ result.content }}</td>
       </tr>
