@@ -32,7 +32,7 @@ async function handleSubmit(e) {
       </button>
     </form>
   </div>
-  <table v-if="results.results" class="my-4">
+  <table v-if="results.results?.length > 0" class="my-4">
     <thead>
       <tr>
         <th>Reference</th>
@@ -46,4 +46,7 @@ async function handleSubmit(e) {
       </tr>
     </tbody>
   </table>
+  <p v-else-if="results.page" class="text-center my-4">
+    Could not find any verses with the search term.
+  </p>
 </template>
