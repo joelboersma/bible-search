@@ -6,7 +6,9 @@ const query = ref("");
 const emit = defineEmits(["submit"]);
 
 function handleSubmit() {
-  emit("submit", query.value);
+  if (query.value) {
+    emit("submit", query.value);
+  }
 }
 </script>
 
