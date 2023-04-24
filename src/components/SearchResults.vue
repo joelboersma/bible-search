@@ -23,13 +23,18 @@ const currentPageResults = computed(() => {
   return results.value[currentPage.value - 1];
 });
 
-const paginatorMessage = computed(() => {
-  if (!(totalResults.value && totalPages.value && currentPage.value)) {
-    return "";
+const currentPageFirstEntry = computed(() => {
+  if (!currentPage.value) {
+    return undefined;
   }
-  const currentPageLastEntry = currentPage.value * PAGE_SIZE;
-  const currentPageFirstEntry = currentPageLastEntry - PAGE_SIZE + 1;
-  return `${currentPageFirstEntry} - ${currentPageLastEntry} of ${totalResults.value}`;
+  return PAGE_SIZE * (currentPage.value - 1) + 1;
+});
+
+const currentPageLastEntry = computed(() => {
+  if (!(currentPage.value && totalPages.value && totalResults.value)) {
+    return undefined;
+  }
+  return Math.min(totalResults.value, currentPage.value * PAGE_SIZE);
 });
 
 watch(
@@ -113,7 +118,13 @@ async function fetchSpecificPageSearchResults(pageNumber) {
           <ChevronLeftIcon class="w-6 h-6 mr-1" />
         </button>
       </div>
-      {{ paginatorMessage }}
+      <div>
+        <strong>
+          {{ currentPageFirstEntry }} - {{ currentPageLastEntry }}
+        </strong>
+        of
+        <strong>{{ totalResults }}</strong>
+      </div>
       <div>
         <button title="Next Page" @click="goToNextPage">
           <ChevronRightIcon class="w-6 h-6 ml-1" />
