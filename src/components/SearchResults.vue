@@ -49,6 +49,38 @@ function reset() {
   totalPages.value = 0;
 }
 
+function goToNextPage() {
+  if (currentPage.value === totalPages.value) return;
+  currentPage.value += 1;
+  if (!results.value[currentPage.value]) {
+    fetchSpecificPageSearchResults(currentPage.value);
+  }
+}
+
+function goToPreviousPage() {
+  if (currentPage.value <= 1) return;
+  currentPage.value -= 1;
+  if (!results.value[currentPage.value]) {
+    fetchSpecificPageSearchResults(currentPage.value);
+  }
+}
+
+function goToFirstPage() {
+  if (currentPage.value <= 1) return;
+  currentPage.value = 1;
+  if (!results.value[currentPage.value]) {
+    fetchSpecificPageSearchResults(currentPage.value);
+  }
+}
+
+function goToLastPage() {
+  if (currentPage.value === totalPages.value) return;
+  currentPage.value = totalPages.value;
+  if (!results.value[currentPage.value]) {
+    fetchSpecificPageSearchResults(currentPage.value);
+  }
+}
+
 async function fetchFirstPageSearchResults(searchTerm) {
   const response = await getSearch(searchTerm);
   fetchedResults.value = true;
@@ -61,25 +93,32 @@ async function fetchFirstPageSearchResults(searchTerm) {
     totalPages.value = response.total_pages;
   }
 }
+
+async function fetchSpecificPageSearchResults(pageNumber) {
+  if (pageNumber > totalPages.value) return;
+  const response = await getSearch(props.query, pageNumber);
+  console.log(response);
+  results.value[pageNumber - 1] = response.results;
+}
 </script>
 
 <template>
   <section v-if="foundResults" class="my-4">
     <div class="flex justify-between">
       <div>
-        <button title="First Page">
+        <button title="First Page" @click="goToFirstPage">
           <ChevronDoubleLeftIcon class="w-6 h-6 mr-1" />
         </button>
-        <button title="Previous Page">
+        <button title="Previous Page" @click="goToPreviousPage">
           <ChevronLeftIcon class="w-6 h-6 mr-1" />
         </button>
       </div>
       {{ paginatorMessage }}
       <div>
-        <button title="Next Page">
+        <button title="Next Page" @click="goToNextPage">
           <ChevronRightIcon class="w-6 h-6 ml-1" />
         </button>
-        <button title="Last Page">
+        <button title="Last Page" @click="goToLastPage">
           <ChevronDoubleRightIcon class="w-6 h-6 ml-1" />
         </button>
       </div>
