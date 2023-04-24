@@ -1,5 +1,11 @@
 <script setup>
 import { ref, watch, computed } from "vue";
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/vue/20/solid";
 import { getSearch } from "../services/esvApi";
 
 const PAGE_SIZE = 20;
@@ -61,13 +67,21 @@ async function fetchFirstPageSearchResults(searchTerm) {
   <section v-if="foundResults" class="my-4">
     <div class="flex justify-between">
       <div>
-        <button>First Page</button>
-        <button>Previous Page</button>
+        <button title="First Page">
+          <ChevronDoubleLeftIcon class="w-6 h-6 mr-1" />
+        </button>
+        <button title="Previous Page">
+          <ChevronLeftIcon class="w-6 h-6 mr-1" />
+        </button>
       </div>
       {{ paginatorMessage }}
       <div>
-        <button>Next Page</button>
-        <button>Last Page</button>
+        <button title="Next Page">
+          <ChevronRightIcon class="w-6 h-6 ml-1" />
+        </button>
+        <button title="Last Page">
+          <ChevronDoubleRightIcon class="w-6 h-6 ml-1" />
+        </button>
       </div>
     </div>
     <table>
