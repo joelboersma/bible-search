@@ -52,7 +52,7 @@ function reset() {
 function goToNextPage() {
   if (currentPage.value === totalPages.value) return;
   currentPage.value += 1;
-  if (!results.value[currentPage.value]) {
+  if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
   }
 }
@@ -60,7 +60,7 @@ function goToNextPage() {
 function goToPreviousPage() {
   if (currentPage.value <= 1) return;
   currentPage.value -= 1;
-  if (!results.value[currentPage.value]) {
+  if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
   }
 }
@@ -68,7 +68,7 @@ function goToPreviousPage() {
 function goToFirstPage() {
   if (currentPage.value <= 1) return;
   currentPage.value = 1;
-  if (!results.value[currentPage.value]) {
+  if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
   }
 }
@@ -76,7 +76,7 @@ function goToFirstPage() {
 function goToLastPage() {
   if (currentPage.value === totalPages.value) return;
   currentPage.value = totalPages.value;
-  if (!results.value[currentPage.value]) {
+  if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
   }
 }
