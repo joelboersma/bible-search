@@ -2,6 +2,8 @@
 import { ref, watch, computed } from "vue";
 import { getSearch } from "../services/esvApi";
 
+const PAGE_SIZE = 20;
+
 const fetchedResults = ref(false);
 const foundResults = ref(false);
 const results = ref([]);
@@ -13,6 +15,15 @@ const props = defineProps(["query"]);
 
 const currentPageResults = computed(() => {
   return results.value[currentPage.value - 1];
+});
+
+const paginatorMessage = computed(() => {
+  if (!(totalResults.value && totalPages.value && currentPage.value)) {
+    return "";
+  }
+  const currentPageLastEntry = currentPage.value * PAGE_SIZE;
+  const currentPageFirstEntry = currentPageLastEntry - PAGE_SIZE + 1;
+  return `${currentPageFirstEntry} - ${currentPageLastEntry} of ${totalResults.value}`;
 });
 
 watch(
@@ -47,20 +58,33 @@ async function fetchFirstPageSearchResults(searchTerm) {
 </script>
 
 <template>
-  <table v-if="foundResults" class="my-4">
-    <thead>
-      <tr>
-        <th>Reference</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="result in currentPageResults">
-        <td>{{ result.reference }}</td>
-        <td>{{ result.content }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <section v-if="foundResults" class="my-4">
+    <div class="flex justify-between">
+      <div>
+        <button>First Page</button>
+        <button>Previous Page</button>
+      </div>
+      {{ paginatorMessage }}
+      <div>
+        <button>Next Page</button>
+        <button>Last Page</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Reference</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="result in currentPageResults">
+          <td>{{ result.reference }}</td>
+          <td>{{ result.content }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
   <p v-else-if="fetchedResults" class="text-center my-4">
     Could not find any verses with that search term.
   </p>
