@@ -4,6 +4,17 @@ A web frontend for the [ESV Bible API](https://api.esv.org/) written in Vue. Sea
 
 This is a work in progress.
 
+## Milestones:
+
+- [x] Initial layout
+- [x] Search by word or phrase
+  - [x] ESV API integration - `/v3/passage/search`
+  - [x] Display results in paginated table
+  - [ ] Make the table actually look nice
+- [ ] Search by passage reference (e.g. John 3:16, Matthew 5:3-10, Psalm 23)
+  - [ ] ESV API integration - `/v3/passage/text` or `/v3/passage/html`
+  - [ ] Display results with scriptural styling
+
 ## Setup
 
 Usage of the [ESV API](https://api.esv.org/) requires an API key. Bible Search's ESV API key is not included in this repository. If you wish to run this project yourself you must obtain an API key by doing the following:
