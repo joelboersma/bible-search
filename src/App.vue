@@ -6,9 +6,9 @@ import SearchView from "./views/SearchView.vue";
 <template>
   <Header />
   <main>
-    <div class="flex justify-center my-4 mx-4">
+    <div class="flex justify-center">
       <div
-        class="border border-solid border-gray-200 w-full max-w-screen-lg p-8 rounded-lg shadow-md"
+        class="w-full max-w-screen-lg p-6 sm:border sm:border-solid sm:border-gray-200 sm:p-8 sm:my-4 sm:mx-8 sm:rounded-lg sm:shadow-md"
       >
         <SearchView />
       </div>
