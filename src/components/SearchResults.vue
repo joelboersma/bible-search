@@ -6,10 +6,12 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "@heroicons/vue/20/solid";
+import { ArrowPathIcon } from "@heroicons/vue/24/outline";
 import { getSearch } from "../services/esvApi";
 
 const PAGE_SIZE = 20;
 
+const isLoading = ref(false);
 const fetchedResults = ref(false);
 const foundResults = ref(false);
 const results = ref([]);
@@ -86,8 +88,15 @@ function goToLastPage() {
   }
 }
 
+async function fetchSearchResults(searchTerm, pageNumber) {
+  isLoading.value = true;
+  const response = await getSearch(searchTerm, pageNumber);
+  isLoading.value = false;
+  return response;
+}
+
 async function fetchFirstPageSearchResults(searchTerm) {
-  const response = await getSearch(searchTerm);
+  const response = await fetchSearchResults(searchTerm);
   fetchedResults.value = true;
   console.log(response);
   if (response?.results?.length > 0) {
@@ -101,7 +110,7 @@ async function fetchFirstPageSearchResults(searchTerm) {
 
 async function fetchSpecificPageSearchResults(pageNumber) {
   if (pageNumber > totalPages.value) return;
-  const response = await getSearch(props.query, pageNumber);
+  const response = await fetchSearchResults(props.query, pageNumber);
   console.log(response);
   results.value[pageNumber - 1] = response.results;
 }
@@ -150,4 +159,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
   <p v-else-if="fetchedResults" class="text-center my-4">
     Could not find any verses with that search term.
   </p>
+  <div v-if="isLoading" class="flex justify-center align-middle mt-5">
+    <ArrowPathIcon class="w-10 h-10 animate-spin" />
+  </div>
 </template>
