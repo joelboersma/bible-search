@@ -169,7 +169,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
       </div>
     </div>
-    <table>
+    <table v-if="!isLoading">
       <thead>
         <tr>
           <th>Reference</th>
