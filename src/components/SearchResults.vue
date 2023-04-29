@@ -56,8 +56,16 @@ function reset() {
   totalPages.value = 0;
 }
 
+function onFirstPage() {
+  return currentPage.value <= 1;
+}
+
+function onLastPage() {
+  return currentPage.value === totalPages.value;
+}
+
 function goToNextPage() {
-  if (currentPage.value === totalPages.value) return;
+  if (onLastPage()) return;
   currentPage.value += 1;
   if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
@@ -65,7 +73,7 @@ function goToNextPage() {
 }
 
 function goToPreviousPage() {
-  if (currentPage.value <= 1) return;
+  if (onFirstPage()) return;
   currentPage.value -= 1;
   if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
@@ -73,7 +81,7 @@ function goToPreviousPage() {
 }
 
 function goToFirstPage() {
-  if (currentPage.value <= 1) return;
+  if (onFirstPage()) return;
   currentPage.value = 1;
   if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
@@ -81,7 +89,7 @@ function goToFirstPage() {
 }
 
 function goToLastPage() {
-  if (currentPage.value === totalPages.value) return;
+  if (onLastPage()) return;
   currentPage.value = totalPages.value;
   if (!results.value[currentPage.value - 1]) {
     fetchSpecificPageSearchResults(currentPage.value);
@@ -120,10 +128,20 @@ async function fetchSpecificPageSearchResults(pageNumber) {
   <section v-if="foundResults" class="my-4">
     <div class="flex justify-center my-2">
       <div class="flex w-full max-w-md">
-        <button title="First Page" class="px-4" @click="goToFirstPage">
+        <button
+          title="First Page"
+          class="px-4"
+          :disabled="isLoading || onFirstPage()"
+          @click="goToFirstPage"
+        >
           <ChevronDoubleLeftIcon class="w-6 h-6" />
         </button>
-        <button title="Previous Page" class="px-4" @click="goToPreviousPage">
+        <button
+          title="Previous Page"
+          class="px-4"
+          :disabled="isLoading || onFirstPage()"
+          @click="goToPreviousPage"
+        >
           <ChevronLeftIcon class="w-6 h-6" />
         </button>
         <div class="text-center flex-grow w-full">
@@ -133,10 +151,20 @@ async function fetchSpecificPageSearchResults(pageNumber) {
           of
           <strong>{{ totalResults }}</strong>
         </div>
-        <button title="Next Page" class="px-4" @click="goToNextPage">
+        <button
+          title="Next Page"
+          class="px-4"
+          :disabled="isLoading || onLastPage()"
+          @click="goToNextPage"
+        >
           <ChevronRightIcon class="w-6 h-6" />
         </button>
-        <button title="Last Page" class="px-4" @click="goToLastPage">
+        <button
+          title="Last Page"
+          class="px-4"
+          :disabled="isLoading || onLastPage()"
+          @click="goToLastPage"
+        >
           <ChevronDoubleRightIcon class="w-6 h-6" />
         </button>
       </div>
