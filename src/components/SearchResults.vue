@@ -110,25 +110,27 @@ async function fetchSpecificPageSearchResults(pageNumber) {
 <template>
   <section v-if="foundResults" class="my-4">
     <div class="flex justify-center my-2">
-      <button title="First Page" class="px-4" @click="goToFirstPage">
-        <ChevronDoubleLeftIcon class="w-6 h-6" />
-      </button>
-      <button title="Previous Page" class="px-4" @click="goToPreviousPage">
-        <ChevronLeftIcon class="w-6 h-6" />
-      </button>
-      <div class="mx-10">
-        <strong>
-          {{ currentPageFirstEntry }} - {{ currentPageLastEntry }}
-        </strong>
-        of
-        <strong>{{ totalResults }}</strong>
+      <div class="flex w-full max-w-md">
+        <button title="First Page" class="px-4" @click="goToFirstPage">
+          <ChevronDoubleLeftIcon class="w-6 h-6" />
+        </button>
+        <button title="Previous Page" class="px-4" @click="goToPreviousPage">
+          <ChevronLeftIcon class="w-6 h-6" />
+        </button>
+        <div class="text-center flex-grow w-full">
+          <strong>
+            {{ currentPageFirstEntry }} - {{ currentPageLastEntry }}
+          </strong>
+          of
+          <strong>{{ totalResults }}</strong>
+        </div>
+        <button title="Next Page" class="px-4" @click="goToNextPage">
+          <ChevronRightIcon class="w-6 h-6" />
+        </button>
+        <button title="Last Page" class="px-4" @click="goToLastPage">
+          <ChevronDoubleRightIcon class="w-6 h-6" />
+        </button>
       </div>
-      <button title="Next Page" class="px-4" @click="goToNextPage">
-        <ChevronRightIcon class="w-6 h-6" />
-      </button>
-      <button title="Last Page" class="px-4" @click="goToLastPage">
-        <ChevronDoubleRightIcon class="w-6 h-6" />
-      </button>
     </div>
     <table>
       <thead>
