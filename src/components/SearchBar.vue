@@ -23,3 +23,20 @@ defineEmits(["update:modelValue"]);
 </template>
 
 <script></script>
+
+<style scoped>
+/**
+On Webkit (Chromium + Safari) an 'X' icon will appear in 
+'input[type="search"]' for clearing it. This is non-standard so 
+it will be hidden.
+Eventually, this can be implemented manually.
+*/
+
+/* Webkit (Chromium + Safari) */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+</style>
