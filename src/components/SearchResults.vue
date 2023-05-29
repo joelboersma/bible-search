@@ -130,7 +130,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
       <div class="flex w-full max-w-md">
         <button
           title="First Page"
-          class="px-4"
+          class="px-4 disabled:text-gray-300"
           :disabled="isLoading || onFirstPage()"
           @click="goToFirstPage"
         >
@@ -138,7 +138,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
         <button
           title="Previous Page"
-          class="px-4"
+          class="px-4 disabled:text-gray-300"
           :disabled="isLoading || onFirstPage()"
           @click="goToPreviousPage"
         >
@@ -153,7 +153,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </div>
         <button
           title="Next Page"
-          class="px-4"
+          class="px-4 disabled:text-gray-300"
           :disabled="isLoading || onLastPage()"
           @click="goToNextPage"
         >
@@ -161,7 +161,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
         <button
           title="Last Page"
-          class="px-4"
+          class="px-4 disabled:text-gray-300"
           :disabled="isLoading || onLastPage()"
           @click="goToLastPage"
         >
