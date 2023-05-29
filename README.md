@@ -10,10 +10,11 @@ This is a work in progress.
 - [x] Search by word or phrase
   - [x] ESV API integration - `/v3/passage/search`
   - [x] Display results in paginated table
-  - [ ] Make the table actually look nice
+  - [x] ~~Make the table actually look nice~~ Turn the table into a sort of card view
 - [ ] Search by passage reference (e.g. John 3:16, Matthew 5:3-10, Psalm 23)
   - [ ] ESV API integration - `/v3/passage/text` or `/v3/passage/html`
   - [ ] Display results with scriptural styling
+- [ ] Completely random Bible verse
 
 ## Setup
 
