@@ -169,14 +169,14 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
       </div>
     </div>
-    <div
-      v-for="result in currentPageResults"
-      class="my-3 border-l-4 border-l-emerald-700 pl-5 rounded-lg"
-    >
-      <p>{{ result.content }}</p>
-      <strong class="text-gray-500">
-        {{ result.reference.toUpperCase() }}
-      </strong>
+    <div v-for="result in currentPageResults" class="my-3 flex">
+      <div class="mr-5 rounded-lg bg-emerald-700 w-1.5 flex-shrink-0" />
+      <div>
+        <p>{{ result.content }}</p>
+        <strong class="text-gray-500">
+          {{ result.reference.toUpperCase() }}
+        </strong>
+      </div>
     </div>
   </section>
   <p v-else-if="fetchedResults" class="text-center my-4">
