@@ -169,20 +169,15 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
       </div>
     </div>
-    <table v-if="!isLoading">
-      <thead>
-        <tr>
-          <th>Reference</th>
-          <th>Content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="result in currentPageResults">
-          <td>{{ result.reference }}</td>
-          <td>{{ result.content }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div
+      v-for="result in currentPageResults"
+      class="my-3 border-l-4 border-l-emerald-700 pl-5 rounded-lg"
+    >
+      <p>{{ result.content }}</p>
+      <strong class="text-gray-500">
+        {{ result.reference.toUpperCase() }}
+      </strong>
+    </div>
   </section>
   <p v-else-if="fetchedResults" class="text-center my-4">
     Could not find any verses with that search term.
