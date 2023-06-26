@@ -21,3 +21,8 @@ export async function getSearch(term, page = 1) {
   const path = `/passage/search?q=${term}&page=${page}`;
   return httpGet(path);
 }
+
+export async function getText(query) {
+  const path = `/passage/text?q=${query}`;
+  return httpGet(path);
+}
