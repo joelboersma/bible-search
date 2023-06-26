@@ -1,0 +1,1 @@
+<template>Random View!</template>
