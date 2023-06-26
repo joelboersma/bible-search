@@ -4,7 +4,7 @@ import { BookOpenIcon } from "@heroicons/vue/24/outline";
 
 <template>
   <header
-    class="bg-emerald-800 text-white text-4xl text-center p-6 font-serif font-extrabold"
+    class="bg-emerald-800 text-white text-4xl text-center pt-6 pb-2 font-serif font-extrabold"
   >
     <h1>
       Bible Search
