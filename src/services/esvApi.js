@@ -28,5 +28,10 @@ export async function getSearch(term, page = 1) {
 export async function getText(query) {
   return httpGet("/passage/text", {
     q: query,
+    "include-passage-references": false,
+    "include-first-verse-numbers": false,
+    "include-verse-numbers": false,
+    "include-footnotes": false,
+    "include-headings": false,
   });
 }
