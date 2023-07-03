@@ -26,7 +26,7 @@ const currentView = computed(() => {
 
 <template>
   <Header />
-  <Navigator :nav-items="navItems" class="w-full max-w-screen-lg" />
+  <Navigator :nav-items="navItems" class="w-full" />
   <main>
     <div class="flex justify-center">
       <div
