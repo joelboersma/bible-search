@@ -455,8 +455,6 @@ function getRandomVerseRepresentation() {
 }
 
 export default function getRandomVerse() {
-  const verseRepresentation = getRandomVerseRepresentation(totalVerses - 1);
-  const [book, chapter, verse] = verseRepresentation;
-  const verseReference = `${bookNames[book]} ${chapter}:${verse}`;
-  console.log(verseReference);
+  const [book, chapter, verse] = getRandomVerseRepresentation();
+  return `${bookNames[book]} ${chapter}:${verse}`;
 }

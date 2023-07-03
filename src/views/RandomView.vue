@@ -6,12 +6,17 @@ import getRandomVerse from "../services/randomVerse";
 const verse = ref("");
 const text = ref("");
 
+function reset() {
+  verse.value = "";
+  text.value = "";
+}
+
 async function fetchRandomVerse() {
-  // const result = await getText("John 3:16");
-  // console.log(result);
-  // verse.value = result.canonical;
-  // text.value = result.passages[0];
-  getRandomVerse();
+  reset();
+  const verseReference = getRandomVerse();
+  verse.value = verseReference;
+  const result = await getText(verseReference);
+  text.value = result.passages[0];
 }
 </script>
 
