@@ -119,6 +119,10 @@ const ommittedVerses = [
  */
 const totalVerses = 31103;
 
+/**
+ * For each book of the Bible, the number of verses present in all previous books.
+ * Padded with a leading 0 so that Genesis is at index 1.
+ */
 const bookBreakpoints = [
   0, 0, 1533, 2746, 3605, 4893, 5852, 6510, 7128, 7213, 8023, 8718, 9534, 10253,
   11195, 12017, 12297, 12703, 12870, 13940, 16401, 17316, 17538, 17655, 18947,
@@ -128,6 +132,12 @@ const bookBreakpoints = [
   29964, 30267, 30375, 30480, 30541, 30646, 30659, 30674, 30699,
 ];
 
+/**
+ * For each book of the Bible, `chapterBreakpoints` contains an array with an element for
+ * each chapter of that book which denotes the number of verses present in all previous chapters.
+ * The chapter array is 1-indexed so that the first chapter is at index 1.
+ * The outer array is also 1-indexed so that Genesis is at index 1.
+ */
 const chapterBreakpoints = [
   null,
   [
