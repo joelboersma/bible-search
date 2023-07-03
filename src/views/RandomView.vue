@@ -1,15 +1,17 @@
 <script setup>
 import { ref } from "vue";
 import { getText } from "../services/esvApi";
+import getRandomVerse from "../services/randomVerse";
 
 const verse = ref("");
 const text = ref("");
 
 async function fetchRandomVerse() {
-  const result = await getText("John 3:16");
-  console.log(result);
-  verse.value = result.canonical;
-  text.value = result.passages[0];
+  // const result = await getText("John 3:16");
+  // console.log(result);
+  // verse.value = result.canonical;
+  // text.value = result.passages[0];
+  getRandomVerse();
 }
 </script>
 
