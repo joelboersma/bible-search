@@ -1,8 +1,9 @@
 const BASE_URL = "https://api.esv.org/v3";
 
-async function httpGet(path) {
+async function httpGet(path, args) {
+  const params = new URLSearchParams(args).toString();
+  const url = new URL(`${BASE_URL}${path}?${params}`);
   try {
-    const url = `${BASE_URL}${path}`;
     const response = await fetch(url, {
       method: "GET",
       withCredentials: true,
@@ -18,6 +19,19 @@ async function httpGet(path) {
 }
 
 export async function getSearch(term, page = 1) {
-  const path = `/passage/search?q=${term}&page=${page}`;
-  return httpGet(path);
+  return httpGet("/passage/search", {
+    q: term,
+    page,
+  });
+}
+
+export async function getText(query) {
+  return httpGet("/passage/text", {
+    q: query,
+    "include-passage-references": false,
+    "include-first-verse-numbers": false,
+    "include-verse-numbers": false,
+    "include-footnotes": false,
+    "include-headings": false,
+  });
 }

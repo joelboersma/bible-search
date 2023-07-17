@@ -6,8 +6,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "@heroicons/vue/20/solid";
-import { ArrowPathIcon } from "@heroicons/vue/24/outline";
 import { getSearch } from "../services/esvApi";
+import LoadingSpinner from "./LoadingSpinner.vue";
 
 const PAGE_SIZE = 20;
 
@@ -183,6 +183,6 @@ async function fetchSpecificPageSearchResults(pageNumber) {
     Could not find any verses with that search term.
   </p>
   <div v-if="isLoading" class="flex justify-center align-middle mt-5">
-    <ArrowPathIcon class="w-10 h-10 animate-spin" />
+    <LoadingSpinner />
   </div>
 </template>

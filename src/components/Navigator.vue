@@ -4,7 +4,16 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  currentRoute: {
+    type: String,
+    required: true,
+  },
 });
+
+function isCurrentPage(route) {
+  console.log(route, props.currentRoute);
+  return route === props.currentRoute;
+}
 </script>
 
 <template>
@@ -15,7 +24,10 @@ const props = defineProps({
       v-for="[route, { title }] in Object.entries(navItems)"
       :href="`#${route}`"
     >
-      <button type="button" class="mx-5 my-2">
+      <button
+        type="button"
+        :class="`mx-5 my-2 ${isCurrentPage(route) ? 'underline' : ''}`"
+      >
         {{ title }}
       </button>
     </a>
