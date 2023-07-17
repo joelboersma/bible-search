@@ -19,14 +19,20 @@ window.addEventListener("hashchange", () => {
   currentPath.value = window.location.hash;
 });
 
+const currentRoute = computed(() => currentPath.value.slice(1) || "/search");
+
 const currentView = computed(() => {
-  return navItems[currentPath.value.slice(1) || "/search"]?.view ?? SearchView;
+  return navItems[currentRoute.value]?.view ?? SearchView;
 });
 </script>
 
 <template>
   <Header />
-  <Navigator :nav-items="navItems" class="w-full" />
+  <Navigator
+    :nav-items="navItems"
+    :current-route="currentRoute"
+    class="w-full"
+  />
   <main>
     <div class="flex justify-center">
       <div
