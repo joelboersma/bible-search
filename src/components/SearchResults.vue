@@ -125,12 +125,12 @@ async function fetchSpecificPageSearchResults(pageNumber) {
 </script>
 
 <template>
-  <section v-if="foundResults" class="my-4">
-    <div class="flex justify-center my-2">
+  <section v-if="foundResults">
+    <div class="flex justify-center">
       <div class="flex w-full max-w-md">
         <button
           title="First Page"
-          class="px-4 disabled:text-gray-300"
+          class="p-4 disabled:text-gray-300"
           :disabled="isLoading || onFirstPage()"
           @click="goToFirstPage"
         >
@@ -138,13 +138,13 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
         <button
           title="Previous Page"
-          class="px-4 disabled:text-gray-300"
+          class="p-4 disabled:text-gray-300"
           :disabled="isLoading || onFirstPage()"
           @click="goToPreviousPage"
         >
           <ChevronLeftIcon class="w-6 h-6" />
         </button>
-        <div class="text-center flex-grow w-full">
+        <div class="p-4 text-center flex-grow w-full">
           <strong>
             {{ currentPageFirstEntry }} - {{ currentPageLastEntry }}
           </strong>
@@ -153,7 +153,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </div>
         <button
           title="Next Page"
-          class="px-4 disabled:text-gray-300"
+          class="p-4 disabled:text-gray-300"
           :disabled="isLoading || onLastPage()"
           @click="goToNextPage"
         >
@@ -161,7 +161,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
         <button
           title="Last Page"
-          class="px-4 disabled:text-gray-300"
+          class="p-4 disabled:text-gray-300"
           :disabled="isLoading || onLastPage()"
           @click="goToLastPage"
         >
@@ -169,7 +169,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
       </div>
     </div>
-    <div v-for="result in currentPageResults" class="my-3 flex">
+    <div v-for="result in currentPageResults" class="mb-3 flex">
       <div class="mr-5 rounded-lg bg-emerald-700 w-1.5 flex-shrink-0" />
       <div>
         <p>{{ result.content }}</p>
