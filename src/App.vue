@@ -5,13 +5,12 @@ import SearchView from "./views/SearchView.vue";
 import RandomView from "./views/RandomView.vue";
 import AboutView from "./views/AboutView.vue";
 
+const currentView = shallowRef(SearchView);
 const navItems = {
   "/search": { title: "Search", view: SearchView },
   "/random": { title: "Random", view: RandomView },
   "/about": { title: "About", view: AboutView },
 };
-
-const currentView = shallowRef(SearchView);
 </script>
 
 <template>
