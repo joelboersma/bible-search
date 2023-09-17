@@ -128,7 +128,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
       <div class="flex w-full max-w-md">
         <button
           title="First Page"
-          class="p-4 disabled:text-gray-300"
+          class="p-4 disabled:text-neutral-300 dark:disabled:text-neutral-700"
           :disabled="isLoading || onFirstPage()"
           @click="goToFirstPage"
         >
@@ -136,7 +136,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
         <button
           title="Previous Page"
-          class="p-4 disabled:text-gray-300"
+          class="p-4 disabled:text-neutral-300 dark:disabled:text-neutral-700"
           :disabled="isLoading || onFirstPage()"
           @click="goToPreviousPage"
         >
@@ -151,7 +151,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </div>
         <button
           title="Next Page"
-          class="p-4 disabled:text-gray-300"
+          class="p-4 disabled:text-neutral-300 dark:disabled:text-neutral-700"
           :disabled="isLoading || onLastPage()"
           @click="goToNextPage"
         >
@@ -159,7 +159,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
         </button>
         <button
           title="Last Page"
-          class="p-4 disabled:text-gray-300"
+          class="p-4 disabled:text-neutral-300 dark:disabled:text-neutral-700"
           :disabled="isLoading || onLastPage()"
           @click="goToLastPage"
         >
@@ -171,7 +171,7 @@ async function fetchSpecificPageSearchResults(pageNumber) {
       <div class="mr-5 rounded-lg bg-emerald-700 w-1.5 flex-shrink-0" />
       <div>
         <p>{{ result.content }}</p>
-        <strong class="text-gray-500">
+        <strong class="text-neutral-500 dark:text-neutral-400">
           {{ result.reference.toUpperCase() }}
         </strong>
       </div>
