@@ -16,7 +16,9 @@ watch(currentView, (newView) => emit("update:currentView", newView));
 </script>
 
 <template>
-  <header class="bg-emerald-800 text-white text-4xl text-center pt-6 pb-2">
+  <header
+    class="bg-emerald-800 text-white text-4xl text-center fixed top-0 left-0 w-full z-50 pt-6 pb-2"
+  >
     <h1 class="text-4xl text-center font-serif font-extrabold">
       <a href="#/">
         Bible Search

@@ -15,9 +15,7 @@ const currentView = shallowRef(SearchView);
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 w-full z-50">
-    <Header :nav-items="navItems" v-model:current-view="currentView" />
-  </div>
+  <Header :nav-items="navItems" v-model:current-view="currentView" />
   <main class="mt-[140px]">
     <div class="flex justify-center">
       <div
