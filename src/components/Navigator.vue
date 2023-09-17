@@ -11,7 +11,6 @@ const props = defineProps({
 });
 
 function isCurrentPage(route) {
-  console.log(route, props.currentRoute);
   return route === props.currentRoute;
 }
 </script>

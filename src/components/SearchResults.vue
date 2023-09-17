@@ -106,7 +106,6 @@ async function fetchSearchResults(searchTerm, pageNumber) {
 async function fetchFirstPageSearchResults(searchTerm) {
   const response = await fetchSearchResults(searchTerm);
   fetchedResults.value = true;
-  console.log(response);
   if (response?.results?.length > 0) {
     foundResults.value = true;
     results.value.push(response.results);
@@ -119,7 +118,6 @@ async function fetchFirstPageSearchResults(searchTerm) {
 async function fetchSpecificPageSearchResults(pageNumber) {
   if (pageNumber > totalPages.value) return;
   const response = await fetchSearchResults(props.query, pageNumber);
-  console.log(response);
   results.value[pageNumber - 1] = response.results;
 }
 </script>
