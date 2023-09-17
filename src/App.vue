@@ -4,10 +4,12 @@ import Header from "./components/Header.vue";
 import Navigator from "./components/Navigator.vue";
 import SearchView from "./views/SearchView.vue";
 import RandomView from "./views/RandomView.vue";
+import AboutView from "./views/AboutView.vue";
 
 const navItems = {
   "/search": { title: "Search", view: SearchView },
   "/random": { title: "Random", view: RandomView },
+  "/about": { title: "About", view: AboutView },
 };
 
 const currentPath = ref(window.location.hash);
