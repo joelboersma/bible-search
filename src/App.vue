@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { shallowRef } from "vue";
 import Header from "./components/Header.vue";
 import Navigator from "./components/Navigator.vue";
 import SearchView from "./views/SearchView.vue";
@@ -12,20 +12,7 @@ const navItems = {
   "/about": { title: "About", view: AboutView },
 };
 
-const currentPath = ref(window.location.hash);
-
-window.addEventListener("hashchange", () => {
-  if (!(window.location.hash.slice(1) in navItems)) {
-    window.location.hash = "#/";
-  }
-  currentPath.value = window.location.hash;
-});
-
-const currentRoute = computed(() => currentPath.value.slice(1) || "/search");
-
-const currentView = computed(() => {
-  return navItems[currentRoute.value]?.view ?? SearchView;
-});
+const currentView = shallowRef(SearchView);
 </script>
 
 <template>
@@ -33,7 +20,7 @@ const currentView = computed(() => {
     <Header />
     <Navigator
       :nav-items="navItems"
-      :current-route="currentRoute"
+      v-model:current-view="currentView"
       class="w-full"
     />
   </div>
