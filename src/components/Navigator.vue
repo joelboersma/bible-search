@@ -31,9 +31,7 @@ function isCurrentPage(route) {
 </script>
 
 <template>
-  <nav
-    class="flex justify-center mb-4 bg-emerald-800 text-white font-serif text-lg"
-  >
+  <nav class="flex justify-center bg-emerald-800 text-white font-serif text-lg">
     <a
       v-for="[route, { title }] in Object.entries(props.navItems)"
       :href="`#${route}`"

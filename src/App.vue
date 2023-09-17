@@ -1,7 +1,6 @@
 <script setup>
 import { shallowRef } from "vue";
 import Header from "./components/Header.vue";
-import Navigator from "./components/Navigator.vue";
 import SearchView from "./views/SearchView.vue";
 import RandomView from "./views/RandomView.vue";
 import AboutView from "./views/AboutView.vue";
@@ -17,12 +16,7 @@ const currentView = shallowRef(SearchView);
 
 <template>
   <div class="fixed top-0 left-0 w-full z-50">
-    <Header />
-    <Navigator
-      :nav-items="navItems"
-      v-model:current-view="currentView"
-      class="w-full"
-    />
+    <Header :nav-items="navItems" v-model:current-view="currentView" />
   </div>
   <main class="mt-[140px]">
     <div class="flex justify-center">
