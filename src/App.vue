@@ -29,13 +29,15 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <Header />
-  <Navigator
-    :nav-items="navItems"
-    :current-route="currentRoute"
-    class="w-full"
-  />
-  <main>
+  <div class="fixed top-0 left-0 w-full z-50">
+    <Header />
+    <Navigator
+      :nav-items="navItems"
+      :current-route="currentRoute"
+      class="w-full"
+    />
+  </div>
+  <main class="mt-[140px]">
     <div class="flex justify-center">
       <div
         class="w-full max-w-screen-lg p-6 sm:border sm:border-solid sm:border-neutrals-200 dark:sm:border-neutral-700 sm:p-8 sm:my-4 sm:mx-8 sm:rounded-lg sm:shadow-md"
